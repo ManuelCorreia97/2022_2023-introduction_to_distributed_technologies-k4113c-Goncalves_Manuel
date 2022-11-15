@@ -1,6 +1,7 @@
 minikube start process
 ![Image text](https://github.com/ManuelCorreia97/2022_2023-introduction_to_distributed_technologies-k4113c-Goncalves_Manuel/blob/main/Lab/lab1/photo_2022-1.jpg)
 writing a manifest to deploy a HashiCorp Vault "pod"
+
 ![Image text](https://github.com/ManuelCorreia97/2022_2023-introduction_to_distributed_technologies-k4113c-Goncalves_Manuel/blob/main/Lab/lab1/photo_2022-2.jpg)
 We create a port on the yaml file
 minikube kubectl apply –f myfirst.yaml
