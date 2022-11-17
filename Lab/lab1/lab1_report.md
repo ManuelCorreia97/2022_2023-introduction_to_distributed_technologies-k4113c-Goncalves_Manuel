@@ -23,3 +23,7 @@ Using command "kubectl logs vault" then find root token in logs.
 
 Minikube will forward the computer port to the container and we can access the vault using the link http://localhost:8200
 ![Image text](https://github.com/ManuelCorreia97/2022_2023-introduction_to_distributed_technologies-k4113c-Goncalves_Manuel/blob/main/Lab/lab1/photo_2022-9.jpg)
+
+Схема организации контейеров и сервисов 
+
+![Image text](https://github.com/ManuelCorreia97/2022_2023-introduction_to_distributed_technologies-k4113c-Goncalves_Manuel/blob/main/Lab/lab1/diagram.jpg)
