@@ -1,3 +1,13 @@
+University: [ITMO University](https://itmo.ru/ru/)
+Faculty: [FICT](https://fict.itmo.ru)
+Course: [Introduction to distributed technologies](https://github.com/itmo-ict-faculty/introduction-to-distributed-technologies)
+Year: 2022/2023
+Group: K4113c
+Author: Goncalves Manuel
+Lab: Lab1
+Date of create: 20.10.2022
+Date of finished: 17.11.2022
+
 minikube start process
 ![Image text](https://github.com/ManuelCorreia97/2022_2023-introduction_to_distributed_technologies-k4113c-Goncalves_Manuel/blob/main/Lab/lab1/photo_2022-1.jpg)
 writing a manifest to deploy a HashiCorp Vault "pod"
