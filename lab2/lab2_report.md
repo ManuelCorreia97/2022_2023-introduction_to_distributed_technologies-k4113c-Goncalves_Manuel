@@ -10,7 +10,7 @@ Group: K4113c
 
 Author: Goncalves Manuel
 
-Lab: Lab1
+Lab: Lab2
 
 Date of create: 17.11.2022
 
@@ -23,7 +23,7 @@ kubectl apply -f webserver.yaml
 ```
 ![Image text](image_2022-11-17_20-02-12.png)
 
-### Creating a service
+### Creating a service.
 [Manifest](https://github.com/ManuelCorreia97/2022_2023-introduction_to_distributed_technologies-k4113c-Goncalves_Manuel/blob/main/lab2/webserver1.yaml)
 
 ### Creating a service through which we will have access to these "pods".
