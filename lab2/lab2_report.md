@@ -10,7 +10,7 @@ Group: K4113c
 
 Author: Goncalves Manuel
 
-Lab: Lab1
+Lab: Lab2
 
 Date of create: 17.11.2022
 
