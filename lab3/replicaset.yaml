@@ -1,13 +1,33 @@
-apiVersion: v1
-kind: Service
+apiVersion: apps/v1
+kind: ReplicaSet
 metadata:
-  name: web-service
+  name: itcd-frontend
   labels:
-    app: nginx
+    app: itcd-frontend
 spec:
-  type: NodePort
-  ports:
-  - port: 3000
-    protocol: TCP
+  replicas: 2
   selector:
-    app: nginx 
+    matchLabels:
+      app: itcd-frontend
+  template:
+    metadata:
+      labels:
+        app: itcd-frontend
+    spec:
+      containers:
+      - name: itdt-contained
+        image: "ifilyaninitmo/itdt-contained-frontend:master"
+        ports:
+        - containerPort: 3000
+          name: web-connect
+        env:
+          - name: REACT_APP_USERNAME
+            valueFrom:
+              configMapKeyRef:
+                name: cm-env
+                key: REACT_APP_USERNAME
+          - name: REACT_APP_COMPANY_NAME
+            valueFrom:
+              configMapKeyRef:
+                name: cm-env
+                key: REACT_APP_COMPANY_NAME
