@@ -16,6 +16,8 @@ Date of create: 17.11.2022
 
 Date of finished: 19.11.2022
 
+# Лабораторная работа №2 "Развертывание веб сервиса в Minikube, доступ к веб интерфейсу сервиса. Мониторинг сервиса."
+
 ## Creating a deployment manifest
 [deployment manifest](https://github.com/ManuelCorreia97/2022_2023-introduction_to_distributed_technologies-k4113c-Goncalves_Manuel/blob/main/lab2/webserver.yaml)
 ```
