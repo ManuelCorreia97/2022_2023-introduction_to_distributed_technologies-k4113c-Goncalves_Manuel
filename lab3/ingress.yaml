@@ -1,21 +1,21 @@
----
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: indfr
+  name: tls-ingress
+  namespace: default
 spec:
   tls:
-    - secretName: test-tls   
-      hosts:
-       - lab3examle.com
+  - hosts:
+      - lab3.example.com
+    secretName: secret-tls
   rules:
-    - host: lab3examle.com
-      http:
-       paths:
-        - path: /
-          pathType: Prefix
-          backend:
-            service:
-              name: indfr-service
-              port: 
-                number: 8080
+  - host: lab3.example.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: itcd-svc
+            port:
+              number: 443
