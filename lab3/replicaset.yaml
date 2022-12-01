@@ -1,31 +1,33 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: ReplicaSet
 metadata:
-  name: indfr
+  name: itcd-frontend
   labels:
-    app: indfr
+    app: itcd-frontend
 spec:
   replicas: 2
-  minReadySeconds: 10
-  strategy:
-    rollingUpdate:
-      maxSurge: 1
-      maxUnavailable: 1
-    type: RollingUpdate
   selector:
     matchLabels:
-      app: http-server
+      app: itcd-frontend
   template:
     metadata:
       labels:
-        app: http-server
+        app: itcd-frontend
     spec:
       containers:
-      - name: indfr-app
-        image: ifilyaninitmo/itdt-contained-frontend:master
+      - name: itdt-contained
+        image: "ifilyaninitmo/itdt-contained-frontend:master"
         ports:
         - containerPort: 3000
-        envFrom:
-        - # prefix: CONFIG_
-          configMapRef:
-            name: cm
+          name: web-connect
+        env:
+          - name: REACT_APP_USERNAME
+            valueFrom:
+              configMapKeyRef:
+                name: cm-env
+                key: REACT_APP_USERNAME
+          - name: REACT_APP_COMPANY_NAME
+            valueFrom:
+              configMapKeyRef:
+                name: cm-env
+                key: REACT_APP_COMPANY_NAME
