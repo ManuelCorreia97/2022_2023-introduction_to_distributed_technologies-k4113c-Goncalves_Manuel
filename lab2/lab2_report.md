@@ -57,5 +57,5 @@ Now, we can access to website via link [http://localhost:3000](http://localhost:
 ![Image text](photo_2022-11-19_16-32-06.jpg)
 
 ## Схема
-![Image text](photo_2022-12-01_17-41-41.jpg)
+![Image text](photo_2022-12-01_17-58-18.jpg)
 

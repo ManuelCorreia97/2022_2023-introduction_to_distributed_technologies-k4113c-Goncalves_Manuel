@@ -9,6 +9,6 @@ spec:
     app: itcd-frontend  
   ports:
     - protocol: TCP
-      port: 443
+      port: 8200
       targetPort: 3000
       name: https-port
