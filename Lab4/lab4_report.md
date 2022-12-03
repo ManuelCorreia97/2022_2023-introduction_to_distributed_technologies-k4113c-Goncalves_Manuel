@@ -12,9 +12,9 @@ Author: Goncalves Manuel
 
 Lab: Lab2
 
-Date of create: 17.11.2022
+Date of create: 24.11.2022
 
-Date of finished: 19.11.2022
+Date of finished: 3.12.2022
 
 # Лабораторная работа №4 "Сети связи в Minikube, CNI и CoreDNS"
 
