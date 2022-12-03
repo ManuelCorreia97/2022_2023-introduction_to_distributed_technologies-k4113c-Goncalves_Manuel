@@ -18,6 +18,8 @@ Date of finished: 3.12.2022
 
 # Лабораторная работа №4 "Сети связи в Minikube, CNI и CoreDNS"
 
+
+
 ### Creating a minikube cluster with 2 nodes and install the CNI=calico plugin
 ```
 minikube start --network-plugin=cni --cni=calico --nodes 2 --kubernetes-version=v1.24.0
