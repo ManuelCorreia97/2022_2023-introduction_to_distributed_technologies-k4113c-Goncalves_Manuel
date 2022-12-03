@@ -16,46 +16,63 @@ Date of create: 17.11.2022
 
 Date of finished: 19.11.2022
 
-# Лабораторная работа №2 "Развертывание веб сервиса в Minikube, доступ к веб интерфейсу сервиса. Мониторинг сервиса."
+# Лабораторная работа №4 "Сети связи в Minikube, CNI и CoreDNS"
 
-## Creating a deployment manifest
-[deployment manifest](https://github.com/ManuelCorreia97/2022_2023-introduction_to_distributed_technologies-k4113c-Goncalves_Manuel/blob/main/lab2/webserver.yaml)
+### Creating a minikube cluster with 2 nodes and install the CNI=calico plugin
 ```
-kubectl apply -f webserver.yaml
+minikube start --network-plugin=cni --cni=calico --nodes 2 --kubernetes-version=v1.24.0
 ```
-![Image text](image_2022-11-17_20-02-12.png)
+![Image text](photo_2022-12-03_13-46-17.jpg)
 
-### Creating a service.
-[Manifest](https://github.com/ManuelCorreia97/2022_2023-introduction_to_distributed_technologies-k4113c-Goncalves_Manuel/blob/main/lab2/webserver1.yaml)
+### Get the list of created nodes:
+```
+minikube kubectl -- get nodes
+```
+![Image text](photo_2022-12-03_13-51-47.jpg)
+### The status of the nodes can be found using the following command:
 
-### Creating a service through which we will have access to these "pods".
+`minikube status -p minikube`
 
-`minikube kubectl -- expose deployment/webserver --type=NodePort --port=3000`
+![Image text](photo_2022-12-03_13-56-23.jpg)
 
-![Image text](image_2022-11-19_16-26-43.png)
+Deploy calicoctl pod
 
-Opening a port to access the service using the following command:
+`kubectl apply -f calicoctl.yaml`
 
-`minikube kubectl -- port-forward service/webserver 3000:30000`
+![Image text](photo_2022-12-03_14-01-51.jpg)
 
-![Image text](photo_2022-11-19_16-37-49.jpg)
+### Set labels for nodes
+```
+kubectl label nodes minikube zone=west
+kubectl label nodes minikube-m02 zone=east
+```
+![Image text](photo_2022-12-03_14-10-29.jpg)
 
-Run `kubectl get deployments` to check if the Deployment was created.
+### Creating an ip pool, remove the default pool:
+```
+kubectl exec -i -n kube-system calicoctl -- /calicoctl create -f - < ip_pool.yaml
+kubectl exec -i -n kube-system calicoctl -- /calicoctl  delete ippools default-ipv4-ippool
+kubectl exec -i -n kube-system calicoctl -- /calicoctl  get ippools -o wide
+```
+![Image text](photo_2022-12-03_14-26-10.jpg)
 
-![Image text](photo_2022-11-19_17-03-38.jpg)
+Let's creating resources, a service, a config map.
+`kubectl apply -f resources.yaml`
+![Image text](photo_2022-12-03_14-28-12.jpg)
 
-## When inspect the Deployments in cluster, the following fields are displayed:
-* NAME lists the names of the Deployments in the namespace;
-* READY displays how many replicas of the application are available to your users. It follows the pattern ready/desired;
-* UP-TO-DATE displays the number of replicas that have been updated to achieve the desired state;
-* AVAILABLE displays how many replicas of the application are available to your users;
-* AGE displays the amount of time that the application has been running.
+### Check out the IP addresses of our pods.
+`kubectl get pods -o wide`
 
-## Result 
-Now, we can access to website via link [http://localhost:3000](http://localhost:3000/)
+![Image text](photo_2022-12-03_14-32-21.jpg)
 
-![Image text](photo_2022-11-19_16-32-06.jpg)
+### Result 
 
-## Схема
-![Image text](photo_2022-12-01_17-58-18.jpg)
+![Image text](photo_2022-12-03_13-31-37.jpg)
 
+### Ping test
+`kubectl exec -it lab4-app-krtx9  -- ping -c4 192.168.2.1`
+
+![Image text](photo_2022-12-03_14-57-01.jpg)
+
+### Схема
+![Image text](photo_2022-12-03_14-52-46.jpg)
