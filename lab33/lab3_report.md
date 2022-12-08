@@ -12,9 +12,9 @@ Author: Goncalves Manuel
 
 Lab: Lab2
 
-Date of create: 17.11.2022
+Date of create: 01.12.2022
 
-Date of finished: . .2022
+Date of finished: 05.12.2022
 
 # Лабораторная работа №3 "Сертификаты и "секреты" в Minikube, безопасное хранение данных."
 
