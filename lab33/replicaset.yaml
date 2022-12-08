@@ -30,3 +30,4 @@ spec:
                configMapKeyRef:
                 name: config-map
                 key: REACT_APP_COMPANY_NAME
+                
