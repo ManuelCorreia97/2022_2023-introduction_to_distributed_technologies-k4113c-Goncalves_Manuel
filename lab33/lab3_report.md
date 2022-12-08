@@ -48,7 +48,7 @@ openssl req -x509 -new -nodes -days 365 -key ca.key -out ca.crt -subj "/CN=lab3.
 ```
 ![Image text](photo_2022-12-04_01-35-11.jpg)
 
-## Importing of the certivicate to minikube
+## Create a secret and add a certificate to it
 ```
 kubectl create secret tls lab3-secret --cert=ca.crt --key=ca.key
 ```
